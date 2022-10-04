@@ -14,10 +14,14 @@ namespace EmployeeWageProblem
            const int Is_Part_time = 2;
            const int Emp_Rate_per_hour = 20;
             //Variables
+            int Num_Of_Working_days = 20;
+            int totalHrs = 0;
             int empHrs = 0;
             int empWage = 0;
-            Random rand = new Random();
-            int empCheck = rand.Next(3);
+            for(int i = 0; i < Num_Of_Working_days; i++)
+            {
+                Random rand = new Random();
+                int empCheck = rand.Next(3);
 
                 //Computation
                 switch (empCheck)
@@ -34,8 +38,12 @@ namespace EmployeeWageProblem
                         empHrs = 0;
                         break;
                 }
-            empWage = Emp_Rate_per_hour * empHrs;
+                totalHrs += empHrs;
+            }
+            Console.WriteLine("total working hours: {0}", totalHrs);
+            empWage = Emp_Rate_per_hour * totalHrs;
             Console.WriteLine("total employee wage is: " + empWage);
+
         }
     }
 }
